@@ -118,7 +118,7 @@
       margin: 0 auto;
     }
 
-    .hero img {
+    .hero video {
       max-width: 300px;
       border-radius: 40% / 50%;
       transform: translateX(-40px);
@@ -397,7 +397,7 @@
       .hero {
         padding: 3rem 1rem 2rem;
       }
-      .hero img {
+      .hero video {
         max-width: 280px;
         transform: translateX(-30px);
       }
@@ -444,7 +444,7 @@
         text-align: center;
         padding: 2rem 1rem;
       }
-      .hero img {
+      .hero video {
         transform: none;
         max-width: 240px;
         margin-bottom: 1rem;
@@ -498,7 +498,11 @@
   <!-- HOME PAGE -->
   <section class="page-section active" id="home">
     <div class="hero">
-      <img src="anime.jpg" alt="Foto Candra" id="profile-img" />
+      <video id="profile-video" autoplay loop muted playsinline>
+  <source src="Animated.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
       <div class="text-box" id="text-box">
         <h1>Hi, I am <span>Candra Puji Utama</span></h1>
         <p>I'm a <span class="typed-text">Developer</span></p>
@@ -580,7 +584,7 @@
       // Trigger animations for home page
       if (pageId === 'home') {
         setTimeout(() => {
-          document.getElementById('profile-img').classList.add('fade-in-left');
+          document.getElementById('profile-video').classList.add('fade-in-left');
           document.getElementById('text-box').classList.add('fade-in-right');
         }, 100);
       }
@@ -613,7 +617,7 @@
 
       // Show home page animations on load
       setTimeout(() => {
-        document.getElementById('profile-img').classList.add('fade-in-left');
+        document.getElementById('profile-video').classList.add('fade-in-left');
         document.getElementById('text-box').classList.add('fade-in-right');
       }, 100);
 
