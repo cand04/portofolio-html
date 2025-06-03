@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Candra - Portofolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    :root {
+      --primary-color: #e74c3c;
+      --bg-light: #fff;
+      --bg-dark: #0f0f0f;
+      --text-light: #1e1e1e;
+      --text-dark: #f1f1f1;
+      --badge-bg-beginner: #f39c12;
+      --badge-bg-intermediate: #2980b9;
+      --badge-bg-expert: #27ae60;
+    }
+
+    [data-theme="dark"] {
+      --bg-light: var(--bg-dark);
+      --text-light: var(--text-dark);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: var(--bg-light);
+      color: var(--text-light);
+      font-family: 'Segoe UI', sans-serif;
+      transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* Hide all sections initially */
+    .page-section {
+      display: none;
+    }
+
+    .page-section.active {
+      display: block;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: transparent;
+      backdrop-filter: none;
+    }
+
+    /* Container kiri: nama Candra */
+    .nav-left h2 {
+      color: var(--primary-color);
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+
+    /* Menu navigasi */
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      /* Geser menu ke kanan */
+      margin-left: auto;
+      margin-right: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      transition: color 0.3s;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary-color);
+    }
+
+    /* Tombol toggle tema */
+    .theme-toggle {
+      background: var(--primary-color);
+      color: #fff;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: background-color 0.3s;
+    }
+
+    .theme-toggle:hover {
+      background-color: #c0392b;
+    }
+
+    /* HOME PAGE STYLES */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 4rem 1rem 2rem;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .hero img {
+      max-width: 300px;
+      border-radius: 40% / 50%;
+      transform: translateX(-40px);
+      transition: max-width 0.3s, transform 0.3s;
+      opacity: 0;
+      flex-shrink: 0;
+    }
+
+    .text-box {
+      max-width: 600px;
+      opacity: 0;
+      flex: 1 1 320px;
+    }
+
+    .text-box h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .text-box h1 span {
+      color: var(--primary-color);
+    }
+
+    .typed-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary-color);
+    }
+
+    .text-box p {
+      margin-top: 0.5rem;
+      line-height: 1.6;
+    }
+
+    .btn-cv {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.6rem 1.2rem;
+      font-size: 1rem;
+      background-color: var(--primary-color);
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .btn-cv:hover {
+      background-color: #c0392b;
+      transform: scale(1.05);
+    }
+
+    .social-icons {
+      margin-top: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: start;
+    }
+
+    .social-icons a {
+      font-size: 1.8rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: var(--bg-light);
+      color: var(--primary-color);
+      transition: all 0.3s;
+      border: 2px solid var(--primary-color);
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      transform: scale(1.15) rotate(10deg);
+    }
+
+    .social-icons a.linkedin:hover { background-color: #0077b5; color: white; }
+    .social-icons a.github:hover { background-color: #333; color: white; }
+    .social-icons a.instagram:hover {
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+      color: white;
+    }
+    .social-icons a.facebook:hover { background-color: #3b5998; color: white; }
+    .social-icons a.tiktok:hover { background-color: #000; color: #69C9D0; }
+
+    /* Animasi */
+    .fade-in-left {
+      animation: fadeInLeft 1s forwards;
+    }
+
+    .fade-in-right {
+      animation: fadeInRight 1s forwards;
+    }
+
+    @keyframes fadeInLeft {
+      from { opacity: 0; transform: translateX(-80px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(80px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    /* SKILLS PAGE STYLES */
+    .skills-main {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .skills-main h1 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+
+    .category-buttons {
+      margin-bottom: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .category-buttons button {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .category-buttons button:hover {
+      background-color: #c0392b;
+    }
+
+    .skill-category {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+      display: grid;
+    }
+
+    .skill-category.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .skill-card {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 1.05rem;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      transition: transform 0.3s, background 0.3s, color 0.3s;
+      position: relative;
+    }
+
+    .skill-card:hover {
+      transform: scale(1.03);
+      background: var(--primary-color);
+      color: white;
+    }
+
+    .skill-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      transition: color 0.3s;
+    }
+
+    .skill-card:hover .skill-icon {
+      color: white;
+    }
+
+    .badge {
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: white;
+      user-select: none;
+    }
+
+    .badge.beginner { background-color: var(--badge-bg-beginner); }
+    .badge.intermediate { background-color: var(--badge-bg-intermediate); }
+    .badge.expert { background-color: var(--badge-bg-expert); }
+
+    .progress-container {
+      width: 100%;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 0.5rem;
+    }
+
+    .progress-bar {
+      height: 100%;
+      border-radius: 8px;
+      transition: width 0.5s ease;
+    }
+
+    .progress-bar.beginner { width: 40%; background-color: var(--badge-bg-beginner); }
+    .progress-bar.intermediate { width: 70%; background-color: var(--badge-bg-intermediate); }
+    .progress-bar.expert { width: 95%; background-color: var(--badge-bg-expert); }
+
+    #filterInput {
+      width: 100%;
+      max-width: 400px;
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
+      border: 2px solid var(--primary-color);
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      color: var(--text-light);
+      background-color: transparent;
+    }
+
+    #filterInput::placeholder {
+      color: var(--text-light);
+      opacity: 0.7;
+    }
+
+    /* BIODATA PAGE STYLES */
+    .biodata-main {
+      padding: 2rem;
+      min-height: 60vh;
+    }
+
+    .biodata-main h1 {
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 2rem;
+    }
+
+    .biodata-main ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      font-size: 1.1rem;
+      max-width: 400px;
+    }
+
+    /* Responsif untuk tablet dan mobile */
+    @media (max-width: 991px) {
+      header {
+        padding: 1rem 1.5rem;
+      }
+      .nav-links {
+        margin-right: 1rem;
+        gap: 1.2rem;
+      }
+      .nav-links a {
+        font-size: 0.9rem;
+      }
+      .theme-toggle {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.7rem;
+      }
+      .hero {
+        padding: 3rem 1rem 2rem;
+      }
+      .hero img {
+        max-width: 280px;
+        transform: translateX(-30px);
+      }
+      .text-box h1 {
+        font-size: 2rem;
+      }
+      .typed-text {
+        font-size: 1.3rem;
+      }
+      .skills-main {
+        padding: 1.5rem;
+      }
+    }
+
+    @media (max-width: 767px) {
+      header {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 1rem;
+      }
+      .nav-left {
+        order: 1;
+        flex-basis: 100%;
+        text-align: center;
+      }
+      .nav-links {
+        order: 2;
+        width: 100%;
+        justify-content: center;
+        margin: 0;
+        gap: 1.5rem;
+        margin-bottom: 0.5rem;
+      }
+      .theme-toggle {
+        order: 3;
+        width: 100%;
+        max-width: 160px;
+        margin: 0 auto;
+        display: block;
+      }
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 2rem 1rem;
+      }
+      .hero img {
+        transform: none;
+        max-width: 240px;
+        margin-bottom: 1rem;
+      }
+      .text-box {
+        max-width: 100%;
+      }
+      .text-box h1 {
+        font-size: 1.8rem;
+      }
+      .typed-text {
+        font-size: 1.2rem;
+      }
+      .social-icons {
+        justify-content: center;
+      }
+      .skills-main {
+        padding: 1rem;
+      }
+      .skills-main h1 {
+        font-size: 1.8rem;
+        text-align: center;
+      }
+      .skill-category {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      }
+      .biodata-main {
+        padding: 1rem;
+      }
+    }
+  </style>
+  <script>
+    // Set theme awal dari localStorage
+    document.documentElement.setAttribute('data-theme', sessionStorage.getItem('theme') || 'dark');
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="nav-left">
+      <h2>Candra</h2>
+    </div>
+    <nav class="nav-links">
+      <a href="#" data-page="home" class="nav-link active">Home</a>
+      <a href="#" data-page="skills" class="nav-link">Skills</a>
+      <a href="#" data-page="biodata" class="nav-link">Biodata</a>
+    </nav>
+    <button class="theme-toggle" onclick="toggleTheme()">Mode Terang</button>
+  </header>
+
+  <!-- HOME PAGE -->
+  <section class="page-section active" id="home">
+    <div class="hero">
+      <img src="https://via.placeholder.com/300x400/e74c3c/ffffff?text=Candra" alt="Foto Candra" id="profile-img" />
+      <div class="text-box" id="text-box">
+        <h1>Hi, I am <span>Candra Puji Utama</span></h1>
+        <p>I'm a <span class="typed-text">Developer</span></p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+          Minus labore dolores esse. 
+          Odit similique doloribus tenetur doloremque, 
+          sunt commodi in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque asperiores ea.</p>
+
+        <a href="#" class="btn-cv" onclick="downloadCV()">Download CV</a>
+
+        <div class="social-icons">
+          <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://github.com/cand04" class="github" title="GitHub"><i class="fab fa-github"></i></a>
+          <a href="https://www.instagram.com/cpu0_4/profilecard/?igsh=MXRjbmhqdmRya3N1OQ==" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/candra.puji.731/" class="facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
+          <a href="https://www.tiktok.com/@candrut040?is_from_webapp=1&sender_device=pc" class="tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS PAGE -->
+  <section class="page-section" id="skills">
+    <main class="skills-main">
+      <h1>Daftar Skills Saya</h1>
+
+      <div class="category-buttons">
+        <button onclick="toggleCategory('pemrograman')">💻 Pemrograman</button>
+        <button onclick="toggleCategory('desain')">🎨 Desain</button>
+      </div>
+
+      <input type="text" id="filterInput" placeholder="Cari skill di kategori yang dipilih..." title="Filter skill" />
+
+      <div id="pemrograman" class="skill-category">
+        <div class="skill-card"><i class="fab fa-html5 skill-icon"></i>HTML<span class="badge expert">Expert</span><div class="progress-container"><div class="progress-bar expert"></div></div></div>
+        <div class="skill-card"><i class="fab fa-css3-alt skill-icon"></i>CSS<span class="badge expert">Expert</span><div class="progress-container"><div class="progress-bar expert"></div></div></div>
+        <div class="skill-card"><i class="fab fa-js skill-icon"></i>JavaScript<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+        <div class="skill-card"><i class="fab fa-laravel skill-icon"></i>Laravel<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+        <div class="skill-card"><i class="fab fa-php skill-icon"></i>PHP<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+      </div>
+
+      <div id="desain" class="skill-category">
+        <div class="skill-card"><i class="fa-solid fa-brain skill-icon"></i>UI/UX<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+        <div class="skill-card"><i class="fa-brands fa-adobe skill-icon"></i>Photoshop<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+        <div class="skill-card"><i class="fa-brands fa-figma skill-icon"></i>Figma<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+        <div class="skill-card"><i class="fa-solid fa-pencil skill-icon"></i>Illustrator<span class="badge beginner">Beginner</span><div class="progress-container"><div class="progress-bar beginner"></div></div></div>
+      </div>
+    </main>
+  </section>
+
+  <!-- BIODATA PAGE -->
+  <section class="page-section" id="biodata">
+    <main class="biodata-main">
+      <h1>Biodata Saya</h1>
+      <p>Informasi tentang diri saya akan ditampilkan di sini.</p>
+    </main>
+  </section>
+
+  <script>
+    const html = document.documentElement;
+    const btn = document.querySelector('.theme-toggle');
+
+    // Navigation functionality
+    function showPage(pageId) {
+      // Hide all sections
+      document.querySelectorAll('.page-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Show selected section
+      document.getElementById(pageId).classList.add('active');
+      
+      // Update active nav link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+      document.querySelector(`[data-page="${pageId}"]`).classList.add('active');
+      
+      // Trigger animations for home page
+      if (pageId === 'home') {
+        setTimeout(() => {
+          document.getElementById('profile-img').classList.add('fade-in-left');
+          document.getElementById('text-box').classList.add('fade-in-right');
+        }, 100);
+      }
+    }
+
+    // Add click event listeners to nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pageId = link.getAttribute('data-page');
+        showPage(pageId);
+      });
+    });
+
+    function toggleTheme() {
+      const current = html.getAttribute('data-theme');
+      const newTheme = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', newTheme);
+      sessionStorage.setItem('theme', newTheme);
+      btn.textContent = newTheme === 'light' ? 'Mode Gelap' : 'Mode Terang';
+    }
+
+    function downloadCV() {
+      alert('CV download functionality would be implemented here with actual CV file.');
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const current = html.getAttribute('data-theme');
+      btn.textContent = current === 'light' ? 'Mode Gelap' : 'Mode Terang';
+
+      // Show home page animations on load
+      setTimeout(() => {
+        document.getElementById('profile-img').classList.add('fade-in-left');
+        document.getElementById('text-box').classList.add('fade-in-right');
+      }, 100);
+
+      // Skills page functionality
+      const filterInput = document.getElementById('filterInput');
+      if (filterInput) {
+        filterInput.addEventListener('input', filterSkills);
+      }
+    });
+
+    // Skills page functions
+    function toggleCategory(id) {
+      const selected = document.getElementById(id);
+      if (selected.classList.contains('visible')) {
+        selected.classList.remove('visible');
+      } else {
+        document.querySelectorAll('.skill-category').forEach(el => el.classList.remove('visible'));
+        selected.classList.add('visible');
+      }
+    }
+
+    function filterSkills() {
+      const filterValue = document.getElementById('filterInput').value.toLowerCase();
+      const visibleCategory = document.querySelector('.skill-category.visible');
+      if (!visibleCategory) return;
+
+      const cards = visibleCategory.querySelectorAll('.skill-card');
+      cards.forEach(card => {
+        const skillName = card.textContent.toLowerCase();
+        card.style.display = skillName.includes(filterValue) ? 'flex' : 'none';
+      });
+    }
+
+    // Typing animation
+    const texts = ['Developer', 'Desain UI/UX', 'Animator', 'Desainer'];
+    let index = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typedElement = document.querySelector('.typed-text');
+
+    function typeText() {
+      const currentText = texts[index];
+      typedElement.textContent = currentText.substring(0, charIndex);
+
+      if (!isDeleting && charIndex < currentText.length) {
+        charIndex++;
+        setTimeout(typeText, 120);
+      } else if (isDeleting && charIndex > 0) {
+        charIndex--;
+        setTimeout(typeText, 80);
+      } else {
+        isDeleting = !isDeleting;
+        if (!isDeleting) index = (index + 1) % texts.length;
+        setTimeout(typeText, 800);
+      }
+    }
+
+    typeText();
+  </script>
+</body>
+</html>
