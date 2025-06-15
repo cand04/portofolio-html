@@ -201,12 +201,7 @@
 
     .social-icons a.linkedin:hover { background-color: #0077b5; color: white; }
     .social-icons a.github:hover { background-color: #333; color: white; }
-    .social-icons a.instagram:hover {
-      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
-      color: white;
-    }
-    .social-icons a.facebook:hover { background-color: #3b5998; color: white; }
-    .social-icons a.tiktok:hover { background-color: #000; color: #69C9D0; }
+    .social-icons a.jobstreet:hover { background-color: #FF6B35; color: white; }
 
     /* Animasi */
     .fade-in-left {
@@ -506,60 +501,84 @@
       <div class="text-box" id="text-box">
         <h1>Hi, I am <span>Candra Puji Utama</span></h1>
         <p>I'm a <span class="typed-text">Developer</span></p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-          Minus labore dolores esse. 
-          Odit similique doloribus tenetur doloremque, 
-          sunt commodi in ipsa repudiandae debitis deleniti blanditiis quibusdam quaerat neque asperiores ea.</p>
+        <p>Saya mahasiswa Teknik Informatika semester 4 di Politeknik Negeri Jember, 
+          berpengalaman sebagai Software Developer, Mobile Developer, Full-Stack Developer, dan UI/UX Designer. 
+          Aktif mengembangkan aplikasi berbasis mobile dan web serta terlibat dalam berbagai proyek Project Based Learning. </p>
 
         <a href="#" class="btn-cv" onclick="downloadCV()">Download CV</a>
 
         <div class="social-icons">
           <a href="#" class="linkedin" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
           <a href="https://github.com/cand04" class="github" title="GitHub"><i class="fab fa-github"></i></a>
-          <a href="https://www.instagram.com/cpu0_4/profilecard/?igsh=MXRjbmhqdmRya3N1OQ==" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.facebook.com/candra.puji.731/" class="facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
-          <a href="https://www.tiktok.com/@candrut040?is_from_webapp=1&sender_device=pc" class="tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+          <a href="https://id.jobstreet.com/id/profile/candra-pujiutama-486zzbkPvj" class="jobstreet" title="JobStreet"><i class="fas fa-briefcase"></i></a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SKILLS PAGE -->
-  <section class="page-section" id="skills">
-    <main class="skills-main">
-      <h1>Daftar Skills Saya</h1>
+<!-- SKILLS PAGE -->
+<section class="page-section" id="skills">
+  <main class="skills-main">
+    <h1>Daftar Skills Saya</h1>
 
-      <div class="category-buttons">
-        <button onclick="toggleCategory('pemrograman')">💻 Pemrograman</button>
-        <button onclick="toggleCategory('desain')">🎨 Desain</button>
-      </div>
+    <div class="category-buttons">
+      <button onclick="toggleCategory('pemrograman')">💻 Pemrograman</button>
+      <button onclick="toggleCategory('desain')">🎨 Desain & Multimedia</button>
+    </div>
 
-      <input type="text" id="filterInput" placeholder="Cari skill di kategori yang dipilih..." title="Filter skill" />
+    <input type="text" id="filterInput" placeholder="Cari skill di kategori yang dipilih..." title="Filter skill" />
 
-      <div id="pemrograman" class="skill-category">
-        <div class="skill-card"><i class="fab fa-html5 skill-icon"></i>HTML<span class="badge expert">Expert</span><div class="progress-container"><div class="progress-bar expert"></div></div></div>
-        <div class="skill-card"><i class="fab fa-css3-alt skill-icon"></i>CSS<span class="badge expert">Expert</span><div class="progress-container"><div class="progress-bar expert"></div></div></div>
-        <div class="skill-card"><i class="fab fa-js skill-icon"></i>JavaScript<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
-        <div class="skill-card"><i class="fab fa-laravel skill-icon"></i>Laravel<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
-        <div class="skill-card"><i class="fab fa-php skill-icon"></i>PHP<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
-      </div>
+    <div id="pemrograman" class="skill-category">
+      <div class="skill-card"><i class="fab fa-java skill-icon"></i>Java<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+      <div class="skill-card"><i class="fa-solid fa-code skill-icon"></i>C#<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+      <div class="skill-card"><i class="fab fa-html5 skill-icon"></i>HTML<span class="badge expert">Expert</span><div class="progress-container"><div class="progress-bar expert"></div></div></div>
+      <div class="skill-card"><i class="fab fa-css3-alt skill-icon"></i>CSS<span class="badge expert">Expert</span><div class="progress-container"><div class="progress-bar expert"></div></div></div>
+      <div class="skill-card"><i class="fab fa-js skill-icon"></i>JavaScript (Dasar)<span class="badge beginner">Beginner</span><div class="progress-container"><div class="progress-bar beginner"></div></div></div>
+      <div class="skill-card"><i class="fa-solid fa-database skill-icon"></i>Database Management<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+      <div class="skill-card"><i class="fa-solid fa-laptop-code skill-icon"></i>NetBeans<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+      <div class="skill-card"><i class="fa-solid fa-cubes skill-icon"></i>Unity<span class="badge beginner">Beginner</span><div class="progress-container"><div class="progress-bar beginner"></div></div></div>
+    </div>
 
-      <div id="desain" class="skill-category">
-        <div class="skill-card"><i class="fa-solid fa-brain skill-icon"></i>UI/UX<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
-        <div class="skill-card"><i class="fa-brands fa-adobe skill-icon"></i>Photoshop<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
-        <div class="skill-card"><i class="fa-brands fa-figma skill-icon"></i>Figma<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
-        <div class="skill-card"><i class="fa-solid fa-pencil skill-icon"></i>Illustrator<span class="badge beginner">Beginner</span><div class="progress-container"><div class="progress-bar beginner"></div></div></div>
-      </div>
-    </main>
-  </section>
+    <div id="desain" class="skill-category">
+      <div class="skill-card"><i class="fa-solid fa-paintbrush skill-icon"></i>UI/UX Design<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+      <div class="skill-card"><i class="fa-brands fa-figma skill-icon"></i>Figma<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+      <div class="skill-card"><i class="fa-brands fa-adobe skill-icon"></i>Adobe Photoshop<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+      <div class="skill-card"><i class="fa-brands fa-adobe skill-icon"></i>Adobe Premiere<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+      <div class="skill-card"><i class="fa-solid fa-cube skill-icon"></i>Blender (3D)<span class="badge beginner">Beginner</span><div class="progress-container"><div class="progress-bar beginner"></div></div></div>
+      <div class="skill-card"><i class="fa-solid fa-pen-nib skill-icon"></i>CorelDraw<span class="badge beginner">Beginner</span><div class="progress-container"><div class="progress-bar beginner"></div></div></div>
+      <div class="skill-card"><i class="fa-brands fa-canva skill-icon"></i>Canva<span class="badge intermediate">Intermediate</span><div class="progress-container"><div class="progress-bar intermediate"></div></div></div>
+    </div>
+  </main>
+</section>
 
-  <!-- BIODATA PAGE -->
-  <section class="page-section" id="biodata">
-    <main class="biodata-main">
-      <h1>Biodata Saya</h1>
-      <p>Informasi tentang diri saya akan ditampilkan di sini.</p>
-    </main>
-  </section>
+<!-- BIODATA PAGE -->
+<section class="page-section" id="biodata">
+  <main class="biodata-main">
+    <h1>Biodata Saya</h1>
+    <ul>
+      <li><strong>Nama:</strong> Candra Puji Utama</li>
+      <li><strong>Asal:</strong> Nganjuk, Jawa Timur</li>
+      <li><strong>Email:</strong> candrapujiutama@gmail.com</li>
+      <li><strong>Telepon:</strong> +62 813 3484 5396</li>
+      <li><strong>Pendidikan:</strong>
+        <ul>
+          <li>Politeknik Negeri Jember (2023 – Sekarang) – D4 Teknik Informatika</li>
+          <li>SMK Muhammadiyah 3 Nganjuk (2020 – 2023) – Multimedia</li>
+        </ul>
+      </li>
+      <li><strong>Pengalaman:</strong>
+        <ul>
+          <li><strong>Software Developer</strong> – Aplikasi MyAdmin (2023–2024)</li>
+          <li><strong>Content Creator</strong> – Freelance (2021–Sekarang)</li>
+        </ul>
+      </li>
+      <li><strong>Organisasi:</strong> Pramuka (Sep 2021 – Des 2021)</li>
+      <li><strong>Prestasi:</strong> Juara 1 Lomba Konten Kreator Anti Narkoba (2022)</li>
+      <li><strong>Bahasa:</strong> Bahasa Indonesia (Fasih), Bahasa Inggris (Dasar – Sedang)</li>
+      <li><strong>Minat:</strong> Game Development, Konten Digital, Inovasi Teknologi, Belajar Mandiri IT, Kegiatan Sosial</li>
+    </ul>
+  </main>
+</section>
 
   <script>
     const html = document.documentElement;
